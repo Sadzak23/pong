@@ -6,8 +6,11 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { Score } from 'src/styles/types/Game';
 
 interface IGameContext {
+  score: Score;
+  setScore: Dispatch<SetStateAction<Score>>;
   play: boolean;
   setPlay: Dispatch<SetStateAction<boolean>>;
   p1: {
@@ -21,6 +24,8 @@ interface IGameContext {
 }
 
 export const GameContext = createContext<IGameContext>({
+  score: { p1: 0, p2: 0 },
+  setScore: () => {},
   play: false,
   setPlay: () => {},
   p1: {
@@ -34,6 +39,7 @@ export const GameContext = createContext<IGameContext>({
 });
 
 export const GameProvider = ({ children }: { children: ReactNode }) => {
+  const [score, setScore] = useState<Score>({ p1: 0, p2: 0 });
   const [play, setPlay] = useState(true);
   const [p1Y, setP1Y] = useState((document.body.clientHeight - 200) / 2);
   const [p2Y, setP2Y] = useState((document.body.clientHeight - 200) / 2);
@@ -53,6 +59,8 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   return (
     <GameContext.Provider
       value={{
+        score,
+        setScore,
         play,
         setPlay,
         p1: { y: p1Y, setY: setP1Y },

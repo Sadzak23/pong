@@ -14,7 +14,7 @@ export const Ball: FC = () => {
   const [movingLeft, setMovingLeft] = useState(!!Math.round(Math.random()));
   const [movingUp, setMovingUp] = useState(!!Math.round(Math.random()));
 
-  const { play, setPlay } = useContext(GameContext);
+  const { play, setPlay, setScore } = useContext(GameContext);
   const p1y = useContext(GameContext).p1.y;
   const p2y = useContext(GameContext).p2.y;
 
@@ -41,7 +41,7 @@ export const Ball: FC = () => {
         }
         // Paddel miss/Score
         else {
-          console.log('p2 score');
+          setScore(e => ({ ...e, p2: e.p2 + 1 }));
           setPlay(false);
         }
       } else if (position.x >= maxLeft && !movingLeft) {
@@ -52,7 +52,7 @@ export const Ball: FC = () => {
         }
         // Paddel miss/Score
         else {
-          console.log('p1 score');
+          setScore(e => ({ ...e, p1: e.p1 + 1 }));
           setPlay(false);
         }
       }
@@ -63,7 +63,7 @@ export const Ball: FC = () => {
         setMovingUp(true);
       }
     }
-  }, [play, position, p1y, p2y, setPlay, movingLeft]);
+  }, [play, position, p1y, p2y, setPlay, setScore, movingLeft]);
 
   // Controll Movement
   useEffect(() => {

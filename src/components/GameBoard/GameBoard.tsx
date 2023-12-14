@@ -7,8 +7,8 @@ import { GameProvider } from 'src/context/GameContext';
 export const Game: FC = () => {
   return (
     <div className="game">
-      <Header />
       <GameProvider>
+        <Header />
         <div className="board">
           <div className="devider" />
           <Paddel player="p1" />

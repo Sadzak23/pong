@@ -1,16 +1,14 @@
-import { FC } from 'react';
-import styles from './header.module.scss';
-import { lsGet } from 'src/utils/scoreUtils';
+import { FC, useContext } from 'react';
+import { GameContext } from 'src/context/GameContext';
 
 export const Header: FC = () => {
-  const p1Score = lsGet('p1-score') || 0;
-  const p2Score = lsGet('p2-score') || 0;
+  const { score } = useContext(GameContext);
 
   return (
-    <div className={styles.header}>
+    <div className="header">
       <h2>Player 1</h2>
-      <div className={styles.score}>
-        <h1>{p1Score}</h1>:<h1>{p2Score}</h1>
+      <div className="score">
+        <h1>{score.p1}</h1>:<h1>{score.p2}</h1>
       </div>
       <h2>Player 2</h2>
     </div>
