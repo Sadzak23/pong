@@ -1,0 +1,21 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: ['react-app'],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  rules: {
+    'react/jsx-key': 'warn',
+    'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'no-extra-boolean-cast': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'prefer-const': 'off',
+    'no-var': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+  },
+};

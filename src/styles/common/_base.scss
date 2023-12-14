@@ -1,0 +1,17 @@
+:root {
+  --light-color: #f1f0d8;
+
+  color: var(--light-color);
+  background-color: #242424;
+}
+body {
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
