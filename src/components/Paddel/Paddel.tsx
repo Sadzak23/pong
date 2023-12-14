@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
+import { GameContext } from 'src/context/GameContext';
 import { PlayerMove } from 'src/styles/types/Game';
 import { controls, movementSpeed } from 'src/utils/settings';
 
@@ -7,18 +8,21 @@ interface Props {
 }
 
 export const Paddel: FC<Props> = ({ player }) => {
-  const [top, setTop] = useState((document.body.clientHeight - 200) / 2);
   const [move, setMove] = useState<PlayerMove>('');
   const [keyUpPressed, setKeyUpPressed] = useState(false);
   const [keyDownPressed, setKeyDownPressed] = useState(false);
+
+  const { play } = useContext(GameContext);
+  const y = useContext(GameContext)[player].y;
+  const setY = useContext(GameContext)[player].setY;
 
   useEffect(() => {
     const increment = 10;
     const maxTop = document.body.clientHeight - 200;
     let intervalId: number;
 
-    const moveUp = () => setTop(e => (e > increment ? e - increment : 0));
-    const moveDown = () => setTop(e => (e < maxTop ? e + increment : maxTop));
+    const moveUp = () => setY(e => (e > increment ? e - increment : 0));
+    const moveDown = () => setY(e => (e < maxTop ? e + increment : maxTop));
 
     if (move === 'up') {
       intervalId = setInterval(moveUp, movementSpeed);
@@ -29,22 +33,24 @@ export const Paddel: FC<Props> = ({ player }) => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [move]);
+  }, [move, setY]);
 
   useEffect(() => {
-    const handleMove = (e: KeyboardEvent) => {
-      if (e.code === controls[player].up) {
-        setMove('up');
-        setKeyUpPressed(true);
-      } else if (e.code === controls[player].down) {
-        setMove('down');
-        setKeyDownPressed(true);
-      }
-    };
+    if (play) {
+      const handleMove = (e: KeyboardEvent) => {
+        if (e.code === controls[player].up) {
+          setMove('up');
+          setKeyUpPressed(true);
+        } else if (e.code === controls[player].down) {
+          setMove('down');
+          setKeyDownPressed(true);
+        }
+      };
 
-    window.addEventListener('keydown', handleMove);
-    return () => window.removeEventListener('keydown', handleMove);
-  }, [player]);
+      window.addEventListener('keydown', handleMove);
+      return () => window.removeEventListener('keydown', handleMove);
+    }
+  }, [player, play]);
 
   useEffect(() => {
     const handleStop = (e: KeyboardEvent) => {
@@ -63,5 +69,5 @@ export const Paddel: FC<Props> = ({ player }) => {
     };
   }, [player, keyDownPressed, keyUpPressed]);
 
-  return <div className={`paddle ${player}`} style={{ top }}></div>;
+  return <div className={`paddle ${player}`} style={{ top: y }}></div>;
 };

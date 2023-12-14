@@ -1,0 +1,19 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .board {
+    padding: 0px 10px;
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    .devider {
+      position: absolute;
+      background-color: var(--light-color);
+      height: 100%;
+      width: 2px;
+    }
+  }
+}
