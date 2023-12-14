@@ -1,0 +1,14 @@
+.header {
+  border-bottom: 1px solid var(--light-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  height: 48px;
+}
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
