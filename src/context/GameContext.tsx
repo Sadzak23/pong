@@ -40,7 +40,7 @@ export const GameContext = createContext<IGameContext>({
 
 export const GameProvider = ({ children }: { children: ReactNode }) => {
   const [score, setScore] = useState<Score>({ p1: 0, p2: 0 });
-  const [play, setPlay] = useState(true);
+  const [play, setPlay] = useState(false);
   const [p1Y, setP1Y] = useState((document.body.clientHeight - 200) / 2);
   const [p2Y, setP2Y] = useState((document.body.clientHeight - 200) / 2);
 

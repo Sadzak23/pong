@@ -1,8 +1,9 @@
 :root {
   --light-color: #f1f0d8;
+  --dark-color: #242424;
 
   color: var(--light-color);
-  background-color: #242424;
+  background-color: var(--dark-color);
 }
 body {
   min-height: 100vh;

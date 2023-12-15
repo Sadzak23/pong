@@ -1,4 +1,5 @@
 import { FC, useContext, useEffect, useState } from 'react';
+import { AlertContext } from 'src/context/AlertContext';
 import { GameContext } from 'src/context/GameContext';
 import { ICoordinates } from 'src/styles/types/Game';
 import {
@@ -17,6 +18,7 @@ export const Ball: FC = () => {
   const { play, setPlay, setScore } = useContext(GameContext);
   const p1y = useContext(GameContext).p1.y;
   const p2y = useContext(GameContext).p2.y;
+  const { setPlayerScored } = useContext(AlertContext);
 
   // Set Ball Size
   useEffect(() => {
@@ -41,6 +43,7 @@ export const Ball: FC = () => {
         }
         // Paddel miss/Score
         else {
+          setPlayerScored('p2');
           setScore(e => ({ ...e, p2: e.p2 + 1 }));
           setPlay(false);
         }
@@ -52,6 +55,7 @@ export const Ball: FC = () => {
         }
         // Paddel miss/Score
         else {
+          setPlayerScored('p1');
           setScore(e => ({ ...e, p1: e.p1 + 1 }));
           setPlay(false);
         }
@@ -63,7 +67,7 @@ export const Ball: FC = () => {
         setMovingUp(true);
       }
     }
-  }, [play, position, p1y, p2y, setPlay, setScore, movingLeft]);
+  }, [play, position, p1y, p2y, movingLeft, setPlay, setScore, setPlayerScored]);
 
   // Controll Movement
   useEffect(() => {
