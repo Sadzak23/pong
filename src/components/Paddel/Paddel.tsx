@@ -1,7 +1,7 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import { GameContext } from 'src/context/GameContext';
 import { PlayerMove } from 'src/styles/types/Game';
-import { controls, movementSpeed } from 'src/utils/settings';
+import { controls, paddleSpeed } from 'src/utils/settings';
 
 interface Props {
   player: 'p1' | 'p2';
@@ -25,9 +25,9 @@ export const Paddel: FC<Props> = ({ player }) => {
     const moveDown = () => setY(e => (e < maxTop ? e + increment : maxTop));
 
     if (move === 'up') {
-      intervalId = setInterval(moveUp, movementSpeed);
+      intervalId = setInterval(moveUp, paddleSpeed);
     } else if (move === 'down') {
-      intervalId = setInterval(moveDown, movementSpeed);
+      intervalId = setInterval(moveDown, paddleSpeed);
     }
 
     return () => {

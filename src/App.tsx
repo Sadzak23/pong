@@ -1,13 +1,12 @@
 import { FC } from 'react';
 import './styles/App.scss';
-import { Game } from './components/GameBoard/GameBoard';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './utils/Router';
 
-export const App: FC = () => {
-  return (
-    <>
-      <Game />
-    </>
-  );
-};
+export const App: FC = () => (
+  <BrowserRouter>
+    <Router />
+  </BrowserRouter>
+);
 
 export default App;

@@ -1,19 +1,19 @@
 import { FC } from 'react';
 import { Paddel } from 'src/components/Paddel/Paddel';
-import { Ball } from '../Ball/Ball';
-import { Header } from '../Header.tsx/Header';
+import { Ball } from '../components/Ball/Ball';
+import { Header } from '../components/Header.tsx/Header';
 import { GameProvider } from 'src/context/GameContext';
 import { AlertProvider } from 'src/context/AlertContext';
 
-export const Game: FC = () => {
+const Game: FC = () => {
   return (
     <div className="game">
       <GameProvider>
         <Header />
         <div className="board">
           <AlertProvider>
-            <div className="devider" />
-            <div className="center" />
+            <span className="devider" />
+            <span className="center" />
             <Paddel player="p1" />
             <Paddel player="p2" />
             <Ball />
@@ -23,3 +23,5 @@ export const Game: FC = () => {
     </div>
   );
 };
+
+export default Game;

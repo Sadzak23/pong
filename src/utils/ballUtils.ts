@@ -1,4 +1,4 @@
-import { ballSize, ballSpeed, paddelSize } from './settings';
+import { ballSize, ballSpeed, paddleSize } from './settings';
 
 export const getBallInitialPosition = () => ({
   x: document.body.clientWidth / 2 - ballSize / 2,
@@ -11,5 +11,5 @@ export const getBallIncrements = () => {
   return { x, y };
 };
 
-export const paddelHitBall = (paddelY: number, ballY: number) =>
-  paddelY <= ballY + ballSize && ballY <= paddelY + paddelSize;
+export const paddleHitBall = (paddleY: number, ballY: number) =>
+  paddleY <= ballY + ballSize && ballY <= paddleY + paddleSize;

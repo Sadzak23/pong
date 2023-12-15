@@ -5,7 +5,7 @@ import { ICoordinates } from 'src/styles/types/Game';
 import {
   getBallIncrements,
   getBallInitialPosition,
-  paddelHitBall,
+  paddleHitBall,
 } from 'src/utils/ballUtils';
 import { ballSize } from 'src/utils/settings';
 
@@ -38,7 +38,7 @@ export const Ball: FC = () => {
       if (position.x <= 20 && movingLeft) {
         setMovingLeft(false);
         // Paddel hit
-        if (paddelHitBall(p1y, position.y)) {
+        if (paddleHitBall(p1y, position.y)) {
           setIncrements(getBallIncrements());
         }
         // Paddel miss/Score
@@ -50,7 +50,7 @@ export const Ball: FC = () => {
       } else if (position.x >= maxLeft && !movingLeft) {
         setMovingLeft(true);
         // Paddel hit
-        if (paddelHitBall(p2y, position.y)) {
+        if (paddleHitBall(p2y, position.y)) {
           setIncrements(getBallIncrements());
         }
         // Paddel miss/Score

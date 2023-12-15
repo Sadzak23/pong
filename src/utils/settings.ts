@@ -1,7 +1,7 @@
-export const movementSpeed = 20;
+export const paddleSpeed = 20;
 export const ballSpeed = 5;
 export const ballSize = 24;
-export const paddelSize = 150;
+export const paddleSize = 150;
 
 export const names = {
   p1: 'Player 1',
