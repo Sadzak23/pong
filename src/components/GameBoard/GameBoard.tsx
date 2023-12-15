@@ -13,6 +13,7 @@ export const Game: FC = () => {
         <div className="board">
           <AlertProvider>
             <div className="devider" />
+            <div className="center" />
             <Paddel player="p1" />
             <Paddel player="p2" />
             <Ball />

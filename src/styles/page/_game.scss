@@ -15,5 +15,14 @@
       height: 100%;
       width: 2px;
     }
+    .center {
+      top: 50%;
+      translate: (0 -50%);
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      border: 2px solid var(--light-color);
+      border-radius: 50%;
+    }
   }
 }
