@@ -1,6 +1,6 @@
 export type PlayerId = 'p1' | 'p2';
 export type PlayerMove = 'up' | 'down' | '';
-export type LsItem = 'p1-score' | 'p2-score';
+export type LsItem = 'p1-name' | 'p2-name';
 export type Score = {
   [key in PlayerId]: number;
 };

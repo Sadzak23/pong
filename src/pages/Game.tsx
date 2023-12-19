@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Paddel } from 'src/components/Paddel/Paddel';
 import { Ball } from '../components/Ball/Ball';
-import { Header } from '../components/Header.tsx/Header';
+import { Header } from '../components/Header/Header';
 import { GameProvider } from 'src/context/GameContext';
 import { AlertProvider } from 'src/context/AlertContext';
 

@@ -1,0 +1,21 @@
+$aligns: (center, left, right);
+$justifies: (
+  around: space-around,
+  between: space-between,
+  evenly: space-evenly,
+);
+
+@each $key in $aligns {
+  .align-#{$key} {
+    align-items: $key !important;
+  }
+  .justify-#{$key} {
+    justify-content: $key !important;
+  }
+}
+
+@each $key, $value in $justifies {
+  .justify-#{$key} {
+    justify-content: $value !important;
+  }
+}

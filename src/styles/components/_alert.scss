@@ -4,7 +4,7 @@
   border-radius: 10px;
   padding: 16px;
   &.pause {
-    top: calc(100% - 100px);
+    top: calc(100% - 130px);
     animation: pulse 1s infinite;
   }
   &.score {
@@ -13,6 +13,6 @@
     translate: (0 -50%);
     animation: score 1s forwards;
     transform: scale(0);
-    border: 1px solid var(--light-color);
+    border: 1px solid var(--primary);
   }
 }

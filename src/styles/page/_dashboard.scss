@@ -43,13 +43,6 @@
     opacity: 0;
     z-index: 2;
     animation: show 2s 3.1s ease forwards;
-    h1 {
-      font-family: fantasy;
-      letter-spacing: 4px;
-      color: var(--light-color);
-      font-size: 120px;
-      font-weight: 900;
-    }
     .button-container {
       display: flex;
       align-items: center;
@@ -57,11 +50,3 @@
     }
   }
 }
-
-/* show */
-// .welcome a.btn,
-// .welcome .header {
-//   opacity: 0;
-//   background-color: var(--primary);
-//   animation: show 2s 3.1s ease forwards;
-// }

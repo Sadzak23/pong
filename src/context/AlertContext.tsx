@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { GameContext } from './GameContext';
 import { PlayerId } from 'src/styles/types/Game';
-import { names } from 'src/utils/settings';
+import { lsGet } from 'src/utils/localStorageUtils';
 
 interface IAlertContext {
   setStartGame: Dispatch<SetStateAction<boolean>>;
@@ -48,12 +48,12 @@ export const AlertProvider = ({ children }: { children: ReactNode }) => {
     >
       {children}
       {pause ? (
-        <h1 className="alert pause">{`Press Spacebar to ${
+        <h3 className="alert pause">{`Press Spacebar to ${
           startGame ? 'start' : 'continue'
-        }`}</h1>
+        }`}</h3>
       ) : null}
       {playerScored ? (
-        <h1 className="alert score">{`${names[playerScored]} scored!`}</h1>
+        <h3 className="alert score">{`${lsGet(`${playerScored}-name`)} scored!`}</h3>
       ) : null}
     </AlertContext.Provider>
   );

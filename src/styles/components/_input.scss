@@ -1,0 +1,43 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 360px;
+  .label {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  input {
+    &:focus-visible {
+      outline: none;
+      border-color: var(--primary);
+    }
+    &:-webkit-autofill {
+      animation-name: auto-fill;
+      animation-duration: 500ms;
+    }
+    background-color: white;
+    font-size: 15px;
+    border-radius: 2px;
+    border: 1px solid var(--element-border);
+    width: 100%;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    &:disabled {
+      background-color: var(--background-light);
+      color: #6a7694;
+    }
+    &::placeholder {
+      color: var(--text-secondary);
+    }
+    &:not(:disabled) {
+      &:hover,
+      &:active {
+        border-color: var(--primary);
+      }
+    }
+  }
+  //   @media #{$bp-mobile} {
+  //     max-width: 100%;
+  //   }
+}

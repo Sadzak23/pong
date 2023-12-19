@@ -12,7 +12,9 @@ const Dashboard: FC = () => {
           <Link to="/game">
             <button>Play</button>
           </Link>
-          <button>Settings</button>
+          <Link to="/settings">
+            <button>Settings</button>
+          </Link>
         </div>
       </div>
       <footer></footer>
