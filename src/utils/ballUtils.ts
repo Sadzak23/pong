@@ -5,8 +5,9 @@ export const getBallInitialPosition = () => ({
   y: (document.body.clientHeight - 50 - ballSize) / 2,
 });
 
-export const getBallIncrements = () => {
-  const y = (Math.random() * ballSpeed) / 1.5;
+export const getBallIncrements = (hitY?: number) => {
+  const yIndex = hitY ? (hitY > 1 ? hitY - 1 : 1 - hitY) : Math.random();
+  const y = (yIndex * ballSpeed) / 1.5;
   const x = ballSpeed - y;
   return { x, y };
 };

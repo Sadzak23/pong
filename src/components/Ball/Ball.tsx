@@ -7,11 +7,14 @@ import {
   getBallInitialPosition,
   paddleHitBall,
 } from 'src/utils/ballUtils';
-import { ballSize } from 'src/utils/settings';
+import { ballSize, paddleSize } from 'src/utils/settings';
+
+const initialPosition = getBallInitialPosition();
+const initialIncrements = getBallIncrements();
 
 export const Ball: FC = () => {
-  const [position, setPosition] = useState<ICoordinates>(getBallInitialPosition());
-  const [increments, setIncrements] = useState(getBallIncrements());
+  const [position, setPosition] = useState<ICoordinates>(initialPosition);
+  const [increments, setIncrements] = useState(initialIncrements);
   const [movingLeft, setMovingLeft] = useState(!!Math.round(Math.random()));
   const [movingUp, setMovingUp] = useState(!!Math.round(Math.random()));
 
@@ -39,7 +42,10 @@ export const Ball: FC = () => {
         setMovingLeft(false);
         // Paddel hit
         if (paddleHitBall(p1y, position.y)) {
-          setIncrements(getBallIncrements());
+          // Ball contact location on the paddle
+          const hitY = (position.y - p1y + ballSize / 2) / (paddleSize / 2);
+          setIncrements(getBallIncrements(hitY));
+          setMovingUp(hitY < 1);
         }
         // Paddel miss/Score
         else {
@@ -51,7 +57,9 @@ export const Ball: FC = () => {
         setMovingLeft(true);
         // Paddel hit
         if (paddleHitBall(p2y, position.y)) {
-          setIncrements(getBallIncrements());
+          const hitY = (position.y - p2y + ballSize / 2) / (paddleSize / 2);
+          setIncrements(getBallIncrements(hitY));
+          setMovingUp(hitY < 1);
         }
         // Paddel miss/Score
         else {
