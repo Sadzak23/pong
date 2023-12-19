@@ -81,7 +81,7 @@ export const Ball: FC = () => {
   useEffect(() => {
     let intervalId: number;
     if (play) {
-      const movementRate = 5;
+      const movementRate = 10;
 
       const move = () => {
         setPosition(e => {
