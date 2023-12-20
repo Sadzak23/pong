@@ -31,7 +31,7 @@
     transform: translate(-50%, -50%);
     background: var(--light-color);
     border-radius: 200px;
-    animation: movePaddel 1.8s linear forwards,
+    animation: movePaddle 1.8s linear forwards,
       puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards,
       borderRadius 0.2s 2.3s linear forwards;
   }

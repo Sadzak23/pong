@@ -7,7 +7,7 @@ interface Props {
   player: 'p1' | 'p2';
 }
 
-export const Paddel: FC<Props> = ({ player }) => {
+export const Paddle: FC<Props> = ({ player }) => {
   const [move, setMove] = useState<PlayerMove>('');
   const [keyUpPressed, setKeyUpPressed] = useState(false);
   const [keyDownPressed, setKeyDownPressed] = useState(false);

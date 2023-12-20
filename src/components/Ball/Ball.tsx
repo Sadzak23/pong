@@ -40,14 +40,14 @@ export const Ball: FC = () => {
       // Bounce horizontal
       if (position.x <= 20 && movingLeft) {
         setMovingLeft(false);
-        // Paddel hit
+        // Paddle hit
         if (paddleHitBall(p1y, position.y)) {
           // Ball contact location on the paddle
           const hitY = (position.y - p1y + ballSize / 2) / (paddleSize / 2);
           setIncrements(getBallIncrements(hitY));
           setMovingUp(hitY < 1);
         }
-        // Paddel miss/Score
+        // Paddle miss/Score
         else {
           setPlayerScored('p2');
           setScore(e => ({ ...e, p2: e.p2 + 1 }));
@@ -55,13 +55,13 @@ export const Ball: FC = () => {
         }
       } else if (position.x >= maxLeft && !movingLeft) {
         setMovingLeft(true);
-        // Paddel hit
+        // Paddle hit
         if (paddleHitBall(p2y, position.y)) {
           const hitY = (position.y - p2y + ballSize / 2) / (paddleSize / 2);
           setIncrements(getBallIncrements(hitY));
           setMovingUp(hitY < 1);
         }
-        // Paddel miss/Score
+        // Paddle miss/Score
         else {
           setPlayerScored('p1');
           setScore(e => ({ ...e, p1: e.p1 + 1 }));

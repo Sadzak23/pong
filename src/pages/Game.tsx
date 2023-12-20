@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Paddel } from 'src/components/Paddel/Paddel';
+import { Paddle } from 'src/components/Paddle/Paddle';
 import { Ball } from '../components/Ball/Ball';
 import { Header } from '../components/Header/Header';
 import { GameProvider } from 'src/context/GameContext';
@@ -14,8 +14,8 @@ const Game: FC = () => {
           <AlertProvider>
             <span className="devider" />
             <span className="center" />
-            <Paddel player="p1" />
-            <Paddel player="p2" />
+            <Paddle player="p1" />
+            <Paddle player="p2" />
             <Ball />
           </AlertProvider>
         </div>

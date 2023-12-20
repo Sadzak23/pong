@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Score } from 'src/styles/types/Game';
 
 interface IGameContext {
@@ -44,17 +45,21 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
   const [p1Y, setP1Y] = useState((document.body.clientHeight - 200) / 2);
   const [p2Y, setP2Y] = useState((document.body.clientHeight - 200) / 2);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const handlePause = (e: KeyboardEvent) => {
+    const handleKeyPress = (e: KeyboardEvent) => {
       if (['KeyP', 'Space'].includes(e.code)) {
         setPlay(e => !e);
+      } else if (e.code === 'Escape') {
+        navigate('/');
       }
     };
-    window.addEventListener('keydown', handlePause);
+    window.addEventListener('keydown', handleKeyPress);
     return () => {
-      window.removeEventListener('keydown', handlePause);
+      window.removeEventListener('keydown', handleKeyPress);
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <GameContext.Provider

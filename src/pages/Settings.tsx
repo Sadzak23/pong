@@ -11,6 +11,7 @@ const Settings: FC = () => {
     <div className="flex column align-center">
       <h2>Settings</h2>
       <div className="settings">
+        <h4>Names</h4>
         <div className="flex gap-5">
           <TextInput
             label="Player 1"
@@ -29,7 +30,7 @@ const Settings: FC = () => {
             }}
           />
         </div>
-        <h3>Controls</h3>
+        <h4>Controls</h4>
         <div className="flex justify-between gap-5 full-width">
           <div className="flex column gap-2 full-width">
             <p>Up: W</p>
