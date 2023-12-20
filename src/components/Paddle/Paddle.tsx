@@ -49,6 +49,10 @@ export const Paddle: FC<Props> = ({ player }) => {
 
       window.addEventListener('keydown', handleMove);
       return () => window.removeEventListener('keydown', handleMove);
+    } else {
+      setKeyUpPressed(false);
+      setKeyDownPressed(false);
+      setMove('');
     }
   }, [player, play]);
 
