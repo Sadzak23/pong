@@ -1,13 +1,15 @@
 .paddle {
   position: absolute;
-  background-color: var(--light-color);
+  background-color: var(--primary);
   height: 150px;
-  width: 10px;
+  width: 15px;
   border-radius: 10px;
   &.p1 {
+    box-shadow: inset 6px 0 4px 0 var(--primary-dark);
     left: 20px;
   }
   &.p2 {
+    box-shadow: inset -6px 0 4px 0 var(--primary-dark);
     right: 20px;
   }
 }

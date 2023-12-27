@@ -3,5 +3,10 @@
   width: 24px;
   border-radius: 50%;
   position: absolute;
-  background-color: var(--light-color);
+  background: radial-gradient(
+    circle at 8px 8px,
+    var(--light-color),
+    var(--primary),
+    #000
+  );
 }

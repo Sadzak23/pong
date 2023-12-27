@@ -1,7 +1,7 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import { AlertContext } from 'src/context/AlertContext';
 import { GameContext } from 'src/context/GameContext';
-import { ICoordinates } from 'src/styles/types/Game';
+import { ICoordinates, PlayerId } from 'src/styles/types/Game';
 import {
   getBallIncrements,
   getBallInitialPosition,
@@ -37,37 +37,29 @@ export const Ball: FC = () => {
       const maxLeft = document.body.clientWidth - ballSize - 30;
       const maxTop = document.body.clientHeight - headerHeight - ballSize;
 
+      const handlePaddleHit = (player: PlayerId) => {
+        // Ball contact location on the paddle
+        const hitY =
+          (position.y - (player === 'p1' ? p1y : p2y) + ballSize / 2) / (paddleSize / 2);
+        setIncrements(getBallIncrements(hitY));
+        setMovingUp(hitY < 1);
+      };
+
+      const handlePlayerScored = (player: PlayerId) => {
+        setPlayerScored(player);
+        setScore(e => ({ ...e, [player]: e[player] + 1 }));
+        setPlay(false);
+      };
+
       // Bounce horizontal
-      if (position.x <= 20 && movingLeft) {
+      if (position.x <= 30 && movingLeft) {
         setMovingLeft(false);
-        // Paddle hit
-        if (paddleHitBall(p1y, position.y)) {
-          // Ball contact location on the paddle
-          const hitY = (position.y - p1y + ballSize / 2) / (paddleSize / 2);
-          setIncrements(getBallIncrements(hitY));
-          setMovingUp(hitY < 1);
-        }
-        // Paddle miss/Score
-        else {
-          setPlayerScored('p2');
-          setScore(e => ({ ...e, p2: e.p2 + 1 }));
-          setPlay(false);
-        }
+        paddleHitBall(p1y, position.y) ? handlePaddleHit('p1') : handlePlayerScored('p2');
       } else if (position.x >= maxLeft && !movingLeft) {
         setMovingLeft(true);
-        // Paddle hit
-        if (paddleHitBall(p2y, position.y)) {
-          const hitY = (position.y - p2y + ballSize / 2) / (paddleSize / 2);
-          setIncrements(getBallIncrements(hitY));
-          setMovingUp(hitY < 1);
-        }
-        // Paddle miss/Score
-        else {
-          setPlayerScored('p1');
-          setScore(e => ({ ...e, p1: e.p1 + 1 }));
-          setPlay(false);
-        }
+        paddleHitBall(p2y, position.y) ? handlePaddleHit('p2') : handlePlayerScored('p1');
       }
+
       // Bounce vertical
       if (position.y < 0) {
         setMovingUp(false);
