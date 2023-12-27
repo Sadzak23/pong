@@ -38,6 +38,12 @@ export const AlertProvider = ({ children }: { children: ReactNode }) => {
     playerScored && play && setPlayerScored('');
   }, [playerScored, play]);
 
+  const playerScoredName = playerScored
+    ? lsGet(`${playerScored}-name`) || playerScored === 'p1'
+      ? 'Player 1'
+      : 'Player 2'
+    : '';
+
   return (
     <AlertContext.Provider
       value={{
@@ -53,7 +59,7 @@ export const AlertProvider = ({ children }: { children: ReactNode }) => {
         }`}</h3>
       ) : null}
       {playerScored ? (
-        <h3 className="alert score">{`${lsGet(`${playerScored}-name`)} scored!`}</h3>
+        <h3 className="alert score">{`${playerScoredName} scored!`}</h3>
       ) : null}
     </AlertContext.Provider>
   );
