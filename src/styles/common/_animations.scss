@@ -93,12 +93,12 @@
 
 @keyframes score {
   0% {
-    transform: scale(0.2);
+    transform: scale(0.2) translateY(-50%);
   }
   70% {
-    transform: scale(1.2);
+    transform: scale(1.2) translateY(-50%);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) translateY(-50%);
   }
 }

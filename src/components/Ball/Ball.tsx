@@ -1,5 +1,4 @@
 import { FC, useContext, useEffect, useState } from 'react';
-import { AlertContext } from 'src/context/AlertContext';
 import { GameContext } from 'src/context/GameContext';
 import { ICoordinates, PlayerId } from 'src/styles/types/Game';
 import {
@@ -18,10 +17,18 @@ export const Ball: FC = () => {
   const [movingLeft, setMovingLeft] = useState(!!Math.round(Math.random()));
   const [movingUp, setMovingUp] = useState(!!Math.round(Math.random()));
 
-  const { play, setPlay, setScore } = useContext(GameContext);
+  const { play, resetBall, handlePlayerScored } = useContext(GameContext);
   const p1y = useContext(GameContext).p1.y;
   const p2y = useContext(GameContext).p2.y;
-  const { setPlayerScored } = useContext(AlertContext);
+
+  useEffect(() => {
+    if (resetBall) {
+      setPosition(getBallInitialPosition());
+      setIncrements(getBallIncrements());
+      setMovingLeft(!!Math.round(Math.random()));
+      setMovingUp(!!Math.round(Math.random()));
+    }
+  }, [resetBall]);
 
   // Set Ball Size
   useEffect(() => {
@@ -45,12 +52,6 @@ export const Ball: FC = () => {
         setMovingUp(hitY < 1);
       };
 
-      const handlePlayerScored = (player: PlayerId) => {
-        setPlayerScored(player);
-        setScore(e => ({ ...e, [player]: e[player] + 1 }));
-        setPlay(false);
-      };
-
       // Bounce horizontal
       if (position.x <= 30 && movingLeft) {
         setMovingLeft(false);
@@ -67,7 +68,7 @@ export const Ball: FC = () => {
         setMovingUp(true);
       }
     }
-  }, [play, position, p1y, p2y, movingLeft, setPlay, setScore, setPlayerScored]);
+  }, [play, position, p1y, p2y, movingLeft, handlePlayerScored]);
 
   // Controll Movement
   useEffect(() => {
