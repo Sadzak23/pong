@@ -4,10 +4,10 @@
   border-radius: 10px;
   padding: 16px;
   left: 50%;
-  transform: translate(-50%, 0);
+  translate: (-50% 0);
   text-align: center;
   &.pause {
-    top: calc(100% - 130px);
+    bottom: 30px;
     animation: pulse 1s infinite;
   }
   &.score-alert {

@@ -7,9 +7,9 @@ import {
   useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PlayerId, Score } from 'src/styles/types/Game';
-import { gameTo } from 'src/utils/settings';
+import { PlayerId, Score } from 'src/styles/types/GameTypes';
 import { lsGet } from 'src/utils/localStorageUtils';
+import { getGameTo } from 'src/utils/settings';
 
 interface IGameContext {
   score: Score;
@@ -103,7 +103,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
 
   const handlePlayerScored = (player: PlayerId) => {
     setPlay(false);
-    gameTo === score[player] + 1 && setPlayerWon(player);
+    getGameTo() === score[player] + 1 && setPlayerWon(player);
     setPlayerScored(player);
     setScore(e => ({ ...e, [player]: e[player] + 1 }));
   };
@@ -133,7 +133,7 @@ export const GameProvider = ({ children }: { children: ReactNode }) => {
       ) : playerScored && playerWon ? (
         <h3 className="alert score-alert">
           {`${playerScoredName} won the game!`}
-          <p>Press R to restart game</p>
+          <p>Press R to restart</p>
           <p>Press Esc to quit</p>
         </h3>
       ) : null}

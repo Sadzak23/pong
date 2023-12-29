@@ -11,7 +11,7 @@ button {
   padding: 16px 64px;
   font-size: 32px;
   color: var(--light-color);
-  min-width: 250px;
+  width: 250px;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
@@ -19,7 +19,8 @@ button {
     rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   &:not(:disabled) {
     &:hover {
-      background-color: var(--primary-dark);
+      background-color: var(--primary-dark) !important;
+      color: white !important;
     }
     &:active {
       transform: translateY(2px);

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 const Dashboard = lazy(() => import('src/pages/Dashboard'));
 const Game = lazy(() => import('src/pages/Game'));
-const Settings = lazy(() => import('src/pages/Settings'));
+const Settings = lazy(() => import('src/pages/SettingsPage'));
 
 const routes = [
   { path: '/', element: <Dashboard /> },

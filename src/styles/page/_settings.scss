@@ -4,4 +4,22 @@
   flex-direction: column;
   gap: 24px;
   width: 500px;
+  .game-to {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    button {
+      height: 50px;
+      width: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      &.active {
+        color: var(--light-color);
+        background-color: var(--primary);
+      }
+    }
+  }
 }

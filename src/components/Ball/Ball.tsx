@@ -1,6 +1,6 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import { GameContext } from 'src/context/GameContext';
-import { ICoordinates, PlayerId } from 'src/styles/types/Game';
+import { ICoordinates, PlayerId } from 'src/styles/types/GameTypes';
 import {
   getBallIncrements,
   getBallInitialPosition,

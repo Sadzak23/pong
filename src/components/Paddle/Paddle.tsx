@@ -1,6 +1,6 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import { GameContext } from 'src/context/GameContext';
-import { PlayerMove } from 'src/styles/types/Game';
+import { PlayerMove } from 'src/styles/types/GameTypes';
 import { controls, paddleSpeed } from 'src/utils/settings';
 
 interface Props {
