@@ -1,18 +1,18 @@
-@import './common/variables';
-@import './common/typography';
-@import './common/base';
-@import './common/display';
-@import './common/animations';
-@import './common/maps/align';
-@import './common/maps/spacing';
+@use './common/variables';
+@use './common/typography';
+@use './common/base';
+@use './common/display';
+@use './common/animations';
+@use './common/maps/align';
+@use './common/maps/spacing';
 
-@import './components/alert';
-@import './components/ball';
-@import './components/button';
-@import './components/header';
-@import './components/input';
-@import './components/paddle';
+@use './components/alert';
+@use './components/ball';
+@use './components/button';
+@use './components/header';
+@use './components/input';
+@use './components/paddle';
 
-@import './page/dashboard';
-@import './page/game';
-@import './page/settings';
+@use './page/dashboard';
+@use './page/game';
+@use './page/settings';

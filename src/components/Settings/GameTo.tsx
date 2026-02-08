@@ -5,20 +5,21 @@ export const GameTo: FC = () => {
   const [gameTo, setGameTo] = useState(Number(lsGet('gameTo') || 5));
 
   return (
-    <div className="game-to">
-      <p>Game to:</p>
-      {[3, 5, 10, 15].map(e => (
-        <button
-          key={e}
-          className={gameTo === e ? 'active' : undefined}
-          onClick={() => {
-            setGameTo(e);
-            lsSet('gameTo', `${e}`);
-          }}
-        >
-          {e}
-        </button>
-      ))}
+    <div className="other">
+      <div className="flex align-center gap-2">
+        <p>Game to:</p>
+        <div className="counter">{gameTo}</div>
+      </div>
+      <input
+        type="range"
+        value={gameTo}
+        onChange={e => {
+          setGameTo(+e.target.value);
+          lsSet('gameTo', e.target.value);
+        }}
+        min={1}
+        max={15}
+      />
     </div>
   );
 };
